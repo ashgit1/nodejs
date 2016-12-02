@@ -1,0 +1,130 @@
+Node-js Def:
+============
+
+Node.js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications. 
+Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
+Node.js = Runtime Environment + JavaScript Library
+
+Installation Details:
+=====================
+
+Node.js was installed at /usr/local/bin/node
+
+npm was installed at /usr/local/bin/npm
+
+Make sure that /usr/local/bin is in your $PATH.
+
+A Node.js application consists of the following three important components:
+============================================================================
+
+Import required modules − We use the "require" directive to load Node.js modules. (same like import in java)
+
+Create server − A server which will listen to client's requests similar to Apache HTTP Server.
+
+Read request and return response − The server created in an earlier step will read the HTTP request made by the client which can be a browser or a console and return the response.
+
+REPL:
+=====
+REPL stands for Read Eval Print Loop and it represents a computer environment like a Windows console or Unix/Linux shell where a command is entered and the system responds with an output in an interactive mode. 
+
+Node.js or Node comes bundled with a REPL environment.
+The REPL feature of Node is very useful in experimenting with Node.js codes and to debug JavaScript codes.
+
+Starting REPL:
+==============
+REPL can be started by simply running node on shell/console without any arguments as follows.
+
+$ node
+
+Node Package Manager (NPM):
+===========================
+
+Node Package Manager (NPM) provides two main functionalities:
+
+Online repositories for node.js packages/modules which are searchable on search.nodejs.org
+
+Command line utility to install Node.js packages, do version management and dependency management of Node.js packages.
+
+NPM comes bundled with Node.js installables after v0.6.3 version. To verify the same, open console and type the following command and see the result −
+
+$ npm --version
+3.10.8
+
+Installing Modules using NPM:
+=============================
+$ npm install <Module Name>
+
+For example, following is the command to install a famous Node.js web framework module called express.
+
+$ npm install express
+
+Now you can use this module in your js file as following:
+
+var express = require('express');
+
+Installing modules globally:
+============================
+$ sudo npm install express -g
+/usr/local/lib
+ls -lrt
+total 0
+drwxrwxr-x  25 root    wheel                    850 Oct 20 03:22 npm
+drwxr-xr-x   9 nobody  HOMEOFFICE\Domain Users  306 Nov 30 16:21 express
+
+Command to check all the modules installed globally:
+=====================================================
+$ npm ls -g
+
+Uninstalling a Module:
+======================
+Use the following command to uninstall a Node.js module.
+
+$ npm uninstall express
+
+Once NPM uninstalls the package, you can verify it by looking at the content of /node_modules/ directory or type the following command −
+
+$ npm ls
+
+Updating a Module:
+===================
+Update package.json and change the version of the dependency to be updated and run the following command.
+
+$ npm update express
+
+Search a Module:
+================
+
+Search a package name using NPM.
+
+$ npm search express
+
+Event Emitter:
+==============
+All objects which emit events are the instances of events.EventEmitter.
+
+EventEmitter provides multiple properties like on and emit. on property is used to bind a function with the event and emit is used to fire an event
+
+By default, EventEmitters will print a warning if more than 10 listeners are added for a particular event.
+It can be changed by using setMaxListeners(n).
+
+ex: event-handler.js and multiple-handlers.js
+
+Buffers:
+========
+
+Node provides Buffer class which provides instances to store raw data similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.
+
+Buffer class is a global class that can be accessed in an application without importing the buffer module.
+
+
+
+
+
+
+
+
+
+
+
+
