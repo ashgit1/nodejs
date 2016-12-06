@@ -1,0 +1,17 @@
+{
+  "name": "ashu-npm-demo-pkg",
+  "version": "1.0.2",
+  "description": "a demo package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "Ashish <adoreashish@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2"
+  }
+}

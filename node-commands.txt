@@ -1,0 +1,172 @@
+Nodejs Commands:
+================
+
+Source : https://docs.npmjs.com/getting-started/
+
+Check the node version : 
+$ node -v
+v6.9.1
+
+check the npm version:
+$ npm
+npm@4.0.3 /usr/local/lib/node_modules/npm
+
+defualt directory where npm writes to:
+$ npm config get prefix
+/usr/local
+
+Changing npm permissions:
+=========================
+https://docs.npmjs.com/getting-started/fixing-npm-permissions
+
+Change the permission to npm's default directory:
+$ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+
+This changes the permissions of the sub-folders used by npm and some other tools (lib/node_modules, bin, and share).
+
+Installing homebrew:
+====================
+Homebrew installs packages to their own directory and then symlinks their files into /usr/local.
+
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+$ brew help
+
+When to add a dependency to the list of dependencies after createing package.json file:
+$ npm install <package_name> --save
+$ npm intsall (lodash) --save
+
+To add a depency manually in the package.json file:
+In the "dependencies" object add the required dependency.
+ex: "tap": "*" (* means I want the latest version of this module)
+
+Managing dependency versions:
+=============================
+If you have a package.json file in your directory and you run "npm install", then npm will look at the dependencies that are listed in that file and download the latest versions satisfying semver rules for all of those
+
+To List all the package install:
+================================
+$ npm ls 
+$ npm ls lodash (for a specific package)
+
+To check whether we are using latest version of packages:
+=========================================================
+$ npm outdated  (it will show which packages are behind by checking repo and local package.json)
+
+If no result then all our packages are up-to-date. 
+
+ow
+
+To update the package list:
+===========================
+$ npm update
+
+Uninstall the packages:
+=======================
+$ npm uninstall (package_name)
+$ npm uninstall tap
+
+It will uninstall the packages but will show it as unmet dependency, that's because it is still present in the package.json file.
+To overcome this again install the package by simply $ npm install since the dependency is still present in the package.json file and then
+while uninstalling do $ npm uninstall lodash --save. This will remove the dependecny fron the package.json file too.
+
+To remove extraneous package:
+=============================
+packages which are present in the node_modules directory but not in package.json file. 
+We simply delete the 'dependency' from 'dependencies' object. 
+To remove them use $ npm prune to remove and then $ npm ls to list the packages.
+
+Installing npm packages globally:
+=================================
+We are using the package 'jshint' to install it globally which checks for javascript syntax error.
+$ npm install jshint -g
+
+If it throws error then we need to fix the permissions errors which we have already seen. I have given myself as the owner of all the files required by node and npm. (Change npm permission section in the current doc for more details)
+
+$ npm install jshint -g
+/usr/local/bin/jshint -> /usr/local/lib/node_modules/jshint/bin/jshint
+
+To test it out create a file jshint-test.js (I created) with some error and then run the command 
+$ jshint jshint-test.js 
+it will show the error.
+
+Updating global packages:
+=========================
+you can use npm update -g <package>
+$ npm update -g jshint
+
+To find out which packages need to be updated, you can use 
+$ npm outdated -g --depth=0
+
+To update all global packages, you can use 
+$ npm update -g.
+
+Uninstalling global packages:
+=============================
+Global packages can be uninstalled with npm uninstall -g <package>
+$ npm uninstall -g jshint
+
+To see list of all the packages locally as well as globally:
+============================================================
+$ npm ls -g --depth=0
+$ npm uninstall -g jshint
+$ npm ls -g --depth=0
+
+Creating Node.js modules:
+=========================
+We can create a module and then later publish this module.
+I created a directory 'npm-demo-pkg' and have used $ npm init to initilise the module. 
+Note this sets up the creation of package.json file with default values.
+
+Once your package.json file is created, you'll want to create the file that will be loaded when your module is required. If you used the default, this is index.js.
+
+Once we create the module publish it and then it can be used by other modules by using the require() method.
+example : npm-demo-pkg and npm-demo-pkg-test
+
+Test the package:
+=================
+Publish your package to npm
+Make a new directory outside of your project and cd into it
+Run: npm install <package>
+Create a test.js file which requires the package and calls the method
+Run: node test.js. The message should be output.
+
+Publishing npm packages:
+========================
+Any Module which contains the package.json file can be published. The 2 necessary fields are 'name' and 'versions'.
+To publish the package with the npm registry we need to create a user.
+$ npm adduser
+Give the required details.
+
+My Account on npmjs.com:
+========================
+name     : Ashishkumar Gupta
+email    : adoreashish@gmail.com
+username : ashukg
+password : Ashish@123
+
+To check the details:
+=====================
+$ npm config ls
+  or
+https://www.npmjs.org/~ashukg
+
+Since we have register the user we can publish the package to the registry by using 
+$ npm publish
+
+This might throw error if the package name atrribute in the package.json file already exist in the registry. 
+I changed the name to 'ashu-npm-demo-pkg' 
+
+$ npm publish
++ ashu-npm-demo-pkg@1.0.0
+
+Once it is publish we can use it in another module by using
+$ npm install ashu-npm-demo-pkg
+
+We can use require('ashu-npm-demo-pkg') to load this module and then can make use of it's properties and functions as required.
+
+Also, we can make changes to the package and then publish it to the repository. But before publishing we need to update the version number.
+Two ways: 1. update in package.json file; 2. npm version patch
+
+
+
