@@ -168,5 +168,132 @@ We can use require('ashu-npm-demo-pkg') to load this module and then can make us
 Also, we can make changes to the package and then publish it to the repository. But before publishing we need to update the version number.
 Two ways: 1. update in package.json file; 2. npm version patch
 
+Semantic Versioning:
+====================
+Read : https://docs.npmjs.com/getting-started/semantic-versioning
 
+Similar commands:
+=================
+To release a bug fix which doesn't affects anything use
+$npm version patch
+
+To release minor changes which are backward compatible use
+$ npm version minor
+
+To release major changes which are not backward compatible use
+$ npm version major
+
+Summary: 
+========
+
+Patch release for bug fixing
+Minor release for features which are backward compatible
+Major release for features which are not backward compatible
+
+Two topics left :
+Working with scoped packages
+Using tags
+
+Working with scoped packages:
+=============================
+Scopes are like namespaces for npm modules. 
+If a package's name begins with @, then it is a scoped package. 
+The scope is everything in between the @ and the slash.
+
+@scope/project-name
+
+Each npm user has their own scope.
+@username/project-name
+
+Update npm and log in:
+----------------------
+You need a version of npm greater than 2.7.0, and you'll need to log in to npm again on the command line if this is your first time using scoped modules.
+
+$ sudo npm install -g npm
+$ npm login
+
+Initializing a scoped package:
+------------------------------
+To create a scoped package, you simply use a package name that starts with your scope.
+
+{
+  "name": "@username/project-name"
+}
+
+If you use npm init, you can add your scope as an option to that command.
+
+$ npm init --scope=username
+
+If you use the same scope all the time, you will probably want to set this option in your .npmrc file.
+
+$ npm config set scope username
+
+Publishing a scoped package:
+----------------------------
+Scoped packages are private by default. 
+To publish private modules, you need to be a paid private modules user.
+
+However, public scoped modules are free and don't require a paid subscription. 
+To publish a public scoped module, set the access option when publishing it. 
+This option will remain set for all subsequent publishes.
+
+$ npm publish --access=public
+
+Using a scoped package:
+-----------------------
+To use a scoped package, you simply include the scope wherever you use the package name.
+
+In package.json:
+
+{
+  "dependencies": {
+    "@username/project-name": "^1.0.0"
+  }
+}
+
+On the command line:
+
+$ npm install @username/project-name --save
+
+In a require statement:
+
+var projectName = require("@username/project-name")
+
+Tags:
+=====
+
+Using dist-tags
+
+Tags are a supplement to semver (e.g., v0.12) for organizing and labeling different versions of packages. 
+In addition to being more human-readable, tags allow publishers to distribute their packages more effectively.
+
+Adding tags:
+------------
+To add a tag to a specific version of your package, use 
+$ npm dist-tag add <pkg>@<version> [<tag>].
+
+Publishing with tags:
+---------------------
+By default, $ npm publish will tag your package with the latest tag. 
+$ npm publish
++ ashu-npm-demo-pkg@1.0.4
+
+If you use the --tag flag, you can specify another tag to use. 
+For example, the following will publish your package with the beta tag:
+
+$ npm publish --tag beta
+
+Installing with tags:
+---------------------
+Like $ npm publish, $ npm install <pkg> will use the latest tag by default. 
+To override this behavior, use 
+$ npm install <pkg>@<tag>. 
+
+The following example will install the somepkg at the version that has been tagged with beta.
+$ npm install somepkg@beta
+
+Caveats:
+--------
+Because dist-tags share the same namespace with semver, avoid using any tag names that may cause a conflict. 
+The best practice is to avoid using tags beginning with a number or the letter "v".
 
