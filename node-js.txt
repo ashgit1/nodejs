@@ -165,12 +165,103 @@ Now we'll use piping and chaining to first compress a file and then decompress t
 example : stream-compress.js and stream-decompress.js
 
 
+File System:
+============
 
+The Node File System (fs) module can be imported using the following syntax:
+$ var fs = require("fs")
 
+Synchronous vs Asynchronous:
+----------------------------
+Every method in the fs module has synchronous as well as asynchronous forms. 
+(*)Asynchronous methods take the last parameter as the completion function callback and the first parameter of the callback function as error. 
+It is better to use an asynchronous method instead of a synchronous method, as the former never blocks a program during its execution, whereas the second one does.
 
+Get File Information:
+---------------------
+Following is the syntax of the method to get the information about a file:
+$ fs.stat(path, callback)
 
+Parameters:
+-----------
+path     − This is the string having file name including path.
+callback − This is the callback function which gets two arguments (err, stats) where stats is an object of "fs.Stats" type.
 
+example: file-info.js, file-read.js, file-write.js, asyn-read.js
 
+Closing a File:
+---------------
+Syntax:
+$ fs.close(fd, callback)
 
+Parameters: 
+fd       − This is the file descriptor returned by file "fs.open()" method.
+callback − This is the callback function. No arguments other than a possible exception are given to the completion callback.
 
+example: file-close.js
 
+Truncate a File:
+----------------
+Syntax:
+$ fs.ftruncate(fd, len, callback)
+
+Parameters:
+fd       − This is the file descriptor returned by fs.open().
+len      − This is the length of the file after which the file will be truncated.
+callback − This is the callback function. No arguments other than a possible exception are given to the completion callback
+
+example: file-trunc.js
+
+Delete a File:
+--------------
+Syntax:
+$ fs.unlink(path, callback)
+
+Parameters:
+path     − This is the file name including path.
+callback − This is the callback function No arguments other than a possible exception are given to the completion callback.
+
+example: file-del.js
+
+Create a Directory:
+-------------------
+Syntax:
+fs.mkdir(path[, mode], callback)
+
+Parameters:
+path     − This is the directory name including path.
+mode     − This is the directory permission to be set. Defaults to 0777.
+callback − This is the callback function. No arguments other than a possible exception are given to the completion callback.
+
+example: fs-create-dir.js
+
+Read a Directory:
+-----------------
+Syntax:
+$ fs.readdir(path, callback)
+
+Parameters:
+path     − This is the directory name including path.
+callback − This is the callback function which gets two arguments (err, files) where files is an array of the names of the files in the directory excluding '.' and '..'.
+
+example: fs-read-dir.js
+
+Remove a Directory:
+-------------------
+Syntax:
+$ fs.rmdir(path, callback)
+
+Parameters:
+path     − This is the directory name including path.
+callback − This is the callback function. No arguments other than a possible exception are given to the completion callback.
+
+example: fs-del-dir.js
+
+Methods Reference:
+==================
+
+There are many methods() available in node.js apart from the above methods.
+For a brief list of all methods:
+https://www.tutorialspoint.com/nodejs/nodejs_file_system.htm
+
+ 
