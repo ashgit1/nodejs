@@ -264,4 +264,74 @@ There are many methods() available in node.js apart from the above methods.
 For a brief list of all methods:
 https://www.tutorialspoint.com/nodejs/nodejs_file_system.htm
 
- 
+Node Global Objects:
+====================
+Objects which can be used without using require.
+example: global-objects/
+		 -> file-name.js 
+		 -> event-glb-obj.js
+
+Node - Utility Modules:
+=======================
+There are several utility modules available in Node.js module library. 
+These modules are very common and are frequently used while developing any Node based application.
+
+OS Module:
+----------
+Provides basic operating-system related utility functions.
+
+Path Module:
+------------
+Provides utilities for handling and transforming file paths.
+
+Net Module:
+-----------
+Provides both servers and clients as streams. Acts as a network wrapper.
+
+DNS Module:
+-----------
+Provides functions to do actual DNS lookup as well as to use underlying operating system name resolution functionalities.
+
+Domain Module:
+--------------
+Provides ways to handle multiple different I/O operations as a single group.
+
+example: node-module/
+		 -> os-module.js
+		 -> server.js
+		 -> client.js
+
+(Remaining DNS module, Domain module, NET module)
+
+===========
+Web Module:
+===========		 
+web-module/
+-> server.js
+-> index.htm
+-> client.js
+
+======================
+Express Web Framework:
+======================
+
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node based Web applications. 
+
+Following are some of the core features of Express framework:
+-------------------------------------------------------------
+Allows to set up middlewares to respond to HTTP Requests.
+Defines a routing table which is used to perform different actions based on HTTP Method and URL.
+Allows to dynamically render HTML Pages based on passing arguments to templates.
+
+Install the Express framework globally using NPM so that it can be used to create a web application using node terminal.
+$ npm install express --save
+
+example: express-demo/
+
+============
+RESTful API:
+============
+
+
+
+
