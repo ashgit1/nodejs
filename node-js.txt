@@ -332,6 +332,12 @@ example: express-demo/
 RESTful API:
 ============
 
+A web service is a collection of open protocols and standards used for exchanging data between applications or systems.
+Web services based on REST Architecture are known as RESTful web services. 
+These webservices uses HTTP methods to implement the concept of REST architecture. A RESTful web service usually defines a URI, Uniform Resource Identifier a service, which provides resource representation such as JSON and set of HTTP Methods.
 
+https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm
+
+example: rest/
 
 
